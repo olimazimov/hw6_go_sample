@@ -1,4 +1,4 @@
-name: hw6_go_sample
+name: hw6_go_sample_CI
 
 on: 
   push:

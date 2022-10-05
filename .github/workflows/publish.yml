@@ -1,0 +1,52 @@
+name: hw6_go_sample_CD
+
+on: 
+  push:
+     branches: ["main"]
+  pull_request:
+     branches: ["main"]
+
+ workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Input tags'
+        required: true
+        default: latest
+        type: string
+      skip-test:
+        description: 'Skip test'
+        required: true
+        default: true
+        type: boolean
+      skip-build:
+        description: 'Skip build'
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  Publish:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Install Go
+      uses: actions/setup-go@v2
+
+    - name: Checkout code
+      uses: actions/checkout@v1
+
+    - name: Fetch modules for go
+      run: go mod download
+
+    - name: Build 
+      run: go build -v ./...
+
+    - name: Run test
+      run: go test -v ./...
+
+    - name: Docker Build
+      run: docker build -t go-sample .
+
+    - name: Docker Publish
+      run: echo "will do it soon" ############################ 
+
+
