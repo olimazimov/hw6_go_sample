@@ -40,11 +40,15 @@ jobs:
     - name: Build 
       run: go build -v ./...
 
+#if checked if-test checkbox
+      
     - name: Run test
       run: go test -v ./...
+      if: ${{ inputs.skip-test }} == false
 
     - name: Docker Build
       run: docker build -t go-sample .
+      if: ${{ inputs.skip-build }} == false
 
     - name: Docker Publish
       run: echo "will do it soon" ############################ 
