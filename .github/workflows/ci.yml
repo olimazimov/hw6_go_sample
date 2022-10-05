@@ -25,8 +25,5 @@ jobs:
     - name: Run test
       run: go test -v ./...
 
-    - name: Run test
-      run: go test -v ./...
-
     - name: Docker Build
       run: docker build -t go-sample .
