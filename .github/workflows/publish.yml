@@ -16,12 +16,12 @@ on:
       skip-test:
         description: 'Skip test'
         required: true
-        default: true
+        default: false
         type: boolean
       skip-build:
         description: 'Skip build'
         required: true
-        default: true
+        default: false
         type: boolean
 
 jobs:
@@ -44,12 +44,12 @@ jobs:
        
     - name: Run test
       run: go test -v ./...
-      if: ${{ inputs.skip-test }} != 'true'
+      if: ${{ inputs.skip-test }} == 'false'
 
     
     - name: Docker Build
       run: docker build -t go-sample .
-      if: ${{ inputs.skip-build }} != 'true'
+      if: ${{ inputs.skip-build }} == 'false'
 
     - name: Docker Publish
       run: echo "will do it soon" ############################ 
