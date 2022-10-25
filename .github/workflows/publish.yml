@@ -2,10 +2,10 @@ name: hw6_go_sample_CD
 
 on:
   #schedule:
-  #  - cron: '*/60 * * * *'
-   push:
+  #  - cron: '*/5 * * * *'
+  push:
       branches: ["main"]
-   pull_request:
+  pull_request:
       branches: ["main"]
  
   workflow_dispatch:
